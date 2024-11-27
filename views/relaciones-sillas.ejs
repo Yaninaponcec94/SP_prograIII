@@ -1,0 +1,21 @@
+<%- include('header.ejs') %>
+<div>
+   
+    <div>
+        <h1>Mesa asociada a la Silla # <%= silla.id %></h1>
+        <p>Nombre: <%= silla.nombre %></p>
+        <p>Cantidad: <%= silla.cantidad %></p>
+    </div>
+    
+    <!-- Mostrar la mesa asociada -->
+    <div>
+        <% if (silla.Mesa) { %>  <!-- Verifica si hay una mesa asociada -->
+            <h1>Mesa # <%= silla.Mesa.id %></h1>
+            <p>Nombre: <%= silla.Mesa.nombre %></p>
+            <p>Lugares: <%= silla.Mesa.lugares %></p>
+            <img src="<%= '/image/mesas/' + silla.Mesa.imagen %>" height="80">
+        <% } else { %>
+            <p>No hay mesa asociada.</p>
+        <% } %>
+    </div>
+    
