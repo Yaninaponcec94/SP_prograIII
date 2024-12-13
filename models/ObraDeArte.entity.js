@@ -1,44 +1,45 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../db/sequelize");
 
-const Silla = sequelize.define(
-  "Silla",
+const ObraDeArte = sequelize.define(
+  "ObraDeArte",
   {
     id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true,
     },
-    MesaId: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: "mesas",  // Asegúrate de que el nombre de la tabla sea "mesas" (en minúsculas)
-        key: "id",
-      },
-    },
     nombre: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    cantidad: {
+    anioDeCreacion: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
+    tipo: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        isIn: [['pintura', 'escultura']],
+      },
+    },
+    imagen: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
     activo: {
-      defaultValue: true,
       type: DataTypes.BOOLEAN,
       allowNull: false,
+      defaultValue: true, 
     },
   },
   {
     timestamps: true,
-    createdAt: "creado_en",
-    updatedAt: "modificado_en",
-    tableName: "sillas",  // Asegúrate de que sea "sillas"
+    createdAt: "creadoEn", 
+    updatedAt: "modificadoEn", 
+    tableName: "obras_de_arte",
   }
 );
 
-
-
-module.exports = Silla;
-
+module.exports = ObraDeArte;

@@ -14,7 +14,7 @@ const storage = multer.diskStorage({
         }
     },
     destination:(req, file, callback) =>{
-        callback(null, "public/image/mesas");
+        callback(null, "public/image/obras");
     },
 });
 //se crea
